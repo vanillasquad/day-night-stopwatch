@@ -20,6 +20,11 @@ function start() {
     return Date.now();
 }
 
+document.getElementById('stop').onclick = stop;
+
+function stop() {
+    clearInterval(inc);
+}
 
 function increment(start, stop) {
     centiseconds ++;
@@ -39,7 +44,7 @@ function increment(start, stop) {
 }
 
 function interval() {
-    setInterval(increment, 10);
+    inc = setInterval(increment, 10);
 }
 
 // var Stopwatch = {
