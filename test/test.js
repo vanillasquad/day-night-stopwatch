@@ -37,8 +37,6 @@ test('increment should increase by 5 seconds', function(assert) {
     }, 5010);
 });
 
-
-
 test('pause timer when stop is clicked', function(assert) {
     var done = assert.async();
     start();

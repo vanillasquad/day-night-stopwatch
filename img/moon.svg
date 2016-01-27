@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" id='moon' fill='#000' x="0" y="0" width="200" height="200" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+   <defs>
+      <link href="../test/style.css" type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml"/>
+   </defs>
+   <path d="M135 142c-47 0-85-38-85-85 0-14 3-26 9-38C36 34 20 60 20 90c0 47 38 85 85 85 33 0 61-19 75-46C167 137 152 142 135 142z"/>
+</svg>
