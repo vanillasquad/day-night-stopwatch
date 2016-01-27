@@ -3,6 +3,10 @@ var centiseconds = 0;
 var seconds = 0;
 var minutes = 0;
 var hours = 0;
+var defaultDisplay = '00:00:00:00';
+
+var display = document.getElementById('time');
+display.innerHTML = defaultDisplay;
 
 function displayTime() {
     var displayhours = hours < 10 ? '0' + hours : hours;
@@ -40,11 +44,20 @@ function increment(start, stop) {
             }
         }
     }
+    display.innerHTML = displayTime();
     return displayTime();
 }
 
 function interval() {
     inc = setInterval(increment, 10);
+}
+
+document.getElementById('reset').onclick = reset;
+
+function reset() {
+    clearInterval(inc);
+    hours = 0, minutes = 0, seconds = 0, centiseconds = 0;
+    display.innerHTML = defaultDisplay;
 }
 
 // var Stopwatch = {

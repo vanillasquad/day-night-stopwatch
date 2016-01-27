@@ -32,3 +32,8 @@ test('pause timer when stop is clicked', function(assert) {
         assert.equal(actual, '00:00:01:00');
     }, 1001);
 });
+
+test('clicking the reset button resets timer to 00:00:00:00', function(assert) {
+    var actual = reset()
+    assert.equal(actual, '00:00:00:00');
+});
