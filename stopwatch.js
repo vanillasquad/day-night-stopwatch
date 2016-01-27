@@ -13,6 +13,9 @@
 
 var startTime = 0;
 var centiseconds = 0;
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
 
 function start() {
     interval();
@@ -21,6 +24,18 @@ function start() {
 
 function increment(start, stop) {
     centiseconds ++;
+    if (centiseconds > 99) {
+        centiseconds = 0;
+        seconds ++;
+        if (seconds > 59) {
+            seconds = 0;
+            minutes ++;
+            if (minutes > 59) {
+                minutes = 0;
+                hours ++;
+            }
+        }
+    }
     //add centiseconds first
     //increase seconds after centisecond limit
     // increase minutes after 59 seconds

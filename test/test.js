@@ -13,3 +13,13 @@ test('increment should increase centiseconds', function(assert) {
         done();
     }, 100);
 });
+
+test('increment should increase seconds', function(assert) {
+    var done = assert.async();
+    interval();
+    setTimeout(function() {
+        var actual = seconds;
+        assert.ok(actual, actual > 0);
+        done();
+    }, 2000);
+});
