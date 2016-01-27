@@ -1,25 +1,29 @@
-// function start() {
-//     // maybe use setinterval to refresh page
-//     // need to return date as string?
-       // var beginning = Date.now();
-//     setTimeout(function() {
-//         var end = Date.now();
-//         var diff = (end - beginning);
-//         console.log(diff);
-//     }, 1000);
-//
-//     return 0;
-// }
-
 var startTime = 0;
 var centiseconds = 0;
 var seconds = 0;
 var minutes = 0;
 var hours = 0;
 
+function displayTime() {
+    var displayhours = hours < 10 ? '0' + hours : hours;
+    var displaymins = minutes < 10 ? '0' + minutes : minutes;
+    var displaysecs = seconds < 10 ? '0' + seconds: seconds;
+    var displaycsecs = centiseconds < 10 ? '0' + centiseconds : centiseconds;
+    console.log(displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs);
+    return displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs;
+}
+
+document.getElementById('start').onclick = start;
+
 function start() {
     interval();
     return Date.now();
+}
+
+document.getElementById('stop').onclick = stop;
+
+function stop() {
+    clearInterval(inc);
 }
 
 function increment(start, stop) {
@@ -36,14 +40,11 @@ function increment(start, stop) {
             }
         }
     }
-    //add centiseconds first
-    //increase seconds after centisecond limit
-    // increase minutes after 59 seconds
-    // increase hours after 59 minutes
+    return displayTime();
 }
 
 function interval() {
-    setInterval(increment, 10);
+    inc = setInterval(increment, 10);
 }
 
 // var Stopwatch = {
