@@ -1,9 +1,15 @@
-test('the go function should start at 0', function(assert) {
+test('start should return current time', function(assert) {
     var actual = start();
-    assert.equal(actual, 0);
+    var now = Date.now();
+    assert.equal(actual, now);
 });
 
-// test('the timer should display HH:MM:SS:CC', function(assert) {
-//     var actual = start();
-//     assert.equal(actual, "00:00:00:00");
-// });
+test('increment should increase centiseconds', function(assert) {
+    var done = assert.async();
+    interval();
+    setTimeout(function() {
+        var actual = centiseconds;
+        assert.ok(actual, actual > 0);
+        done();
+    }, 100);
+});
