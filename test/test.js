@@ -23,3 +23,12 @@ test('increment should increase seconds', function(assert) {
         done();
     }, 2000);
 });
+
+test('pause timer when stop is clicked', function(assert) {
+    var done = assert.async();
+    start();
+    setTimeout(function() {
+        var actual = displayTime();
+        assert.equal(actual, '00:00:01:00');
+    }, 1001);
+});
