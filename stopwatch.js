@@ -4,6 +4,7 @@ var seconds = 0;
 var minutes = 0;
 var hours = 0;
 var defaultDisplay = '00:00:00:00';
+var startCalled = false;
 
 var display = document.getElementById('time');
 display.innerHTML = defaultDisplay;
