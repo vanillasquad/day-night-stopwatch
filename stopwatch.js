@@ -4,7 +4,7 @@ var seconds = 0;
 var minutes = 0;
 var hours = 0;
 var defaultDisplay = '00:00:00:00';
-var startCalled = false;
+var started = false;
 
 var display = document.getElementById('time');
 display.innerHTML = defaultDisplay;
@@ -21,14 +21,20 @@ function displayTime() {
 document.getElementById('start').onclick = start;
 
 function start() {
+   if (!started) {
     interval();
-    return Date.now();
+    started = true;
+   }
+   //  return Date.now();
 }
 
 document.getElementById('stop').onclick = stop;
 
 function stop() {
+   if (started) {
     clearInterval(inc);
+    started = false;
+   }
 }
 
 function increment(start, stop) {
@@ -59,6 +65,7 @@ function reset() {
     clearInterval(inc);
     hours = 0, minutes = 0, seconds = 0, centiseconds = 0;
     display.innerHTML = defaultDisplay;
+    started = false;
 }
 
 // var Stopwatch = {
