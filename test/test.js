@@ -1,30 +1,30 @@
-test('increment should increase centiseconds', function(assert) {
+test('increment should increase csecs', function(assert) {
     var done = assert.async();
     start();
     setTimeout(function() {
-        var actual = centiseconds;
+        var actual = csecs;
         assert.ok(actual, actual > 0);
         reset();
         done();
     }, 100);
 });
 
-test('increment should increase seconds', function(assert) {
+test('increment should increase secs', function(assert) {
     var done = assert.async();
     start();
     setTimeout(function() {
-        var actual = seconds;
+        var actual = secs;
         assert.ok(actual, actual > 0);
         reset();
         done();
     }, 2000);
 });
 
-test('increment should increase by 5 seconds', function(assert) {
+test('increment should increase by 5 secs', function(assert) {
     var done = assert.async();
     start();
     setTimeout(function() {
-        var actual = seconds;
+        var actual = secs;
         assert.equal(actual, 5);
         reset();
         done();
