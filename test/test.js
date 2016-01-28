@@ -196,6 +196,3 @@ test('reset should clear all lap times', function(assert) {
         }, 500);
     }, 1000);
 });
-
-// add lap number?
-// lap needs to be hidden by default

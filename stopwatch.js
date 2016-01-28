@@ -64,11 +64,6 @@ var Timer = (function (){
         csecs = 0;
         display.innerHTML = defaultDisplay;
         started = false;
-        // var laps = document.getElementById('lap-container');
-        // while (laps.firstChild) {
-        //     laps.removeChild(laps.firstChild);
-        // }
-        // console.log(laps.firstChild);
         lapButton.className = 'btn hide-btn';
         startButton.className = 'btn';
     };
@@ -88,7 +83,7 @@ var Timer = (function (){
         while (laps.firstChild) {
             laps.removeChild(laps.firstChild);
         }
-    }
+    };
 
     return {
         startClock: startClock,
