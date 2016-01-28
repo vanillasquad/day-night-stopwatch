@@ -10,5 +10,6 @@ The goal of this project is to create a stopwatch using TDD.
 * Reset timer to zero
 
 ### Stretch Goals
+* Night and Day UI themes
 * Lap timer
 * Countdown timer

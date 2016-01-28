@@ -27,11 +27,12 @@ body {
 .btn {
     height: 100px;
     width: 100px;
+    font-size: 1em;
     color: #fff;
     background-color: transparent;
     border: 2px #fff solid;
     border-radius: 200px;
-    margin: 0 4.2em;
+    margin: 0 3.3em;
     transition: 0.3s ease;
     outline: none;
 }
@@ -40,8 +41,12 @@ body {
     display: none;
 }
 
+#lap:hover {
+    background-color: #B472E5;
+}
+
 #start:hover {
-    background-color: #4BDF9F;
+    background-color: #2BB67A;
 }
 
 #stop:hover {
