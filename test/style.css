@@ -3,6 +3,29 @@ body {
     transition: background-color 1s ease;
 }
 
+.stars {
+    background: url(../img/constellation.svg);
+    animation: move-stars 80s linear infinite;
+    background-size: 15%;
+}
+
+#star-overlay {
+    transition: 3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: #292F45;
+    opacity: 0;
+}
+
+@keyframes move-stars {
+    0% {background-position: 0% 0%}
+    100% {background-position: 100% 98%}
+}
+
 #app {
     width: 50%;
     margin: 5em auto;

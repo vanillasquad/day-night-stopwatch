@@ -94,11 +94,30 @@ var Timer = (function (){
         clearLaps();
         reset();
     });
-    document.getElementById('moon').addEventListener('click',function() {
-        document.body.className = 'night';
+
+    var starsVisible = false;
+    var sunVisible = true;
+    document.getElementById('moon').addEventListener('click', function() {
+        if (starsVisible === false) {
+            document.body.className = 'night';
+            starsVisible = true;
+            sunVisible = false;
+            document.getElementById('star-overlay').style.opacity = 1;
+            setTimeout(function() {
+                if (sunVisible === false) {
+                    document.body.className = 'stars night'
+                    document.getElementById('star-overlay').style.opacity = 0;
+                }
+            }, 1200)
+        }
     });
     document.getElementById('sun').addEventListener('click', function() {
-        document.body.className = '';
+        if (starsVisible === true) {
+            starsVisible = false;
+            sunVisible = true;
+            document.body.className = '';
+            document.getElementById('star-overlay').style.opacity = 0;
+        }
     });
     return {
         start: start,
