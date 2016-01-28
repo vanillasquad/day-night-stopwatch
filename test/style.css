@@ -27,7 +27,7 @@ body {
 }
 
 #app {
-    width: 50%;
+    width: 100%;
     margin: 5em auto;
     text-align:center;
     color: #fff;
@@ -54,7 +54,7 @@ body {
     background-color: transparent;
     border: 2px #fff solid;
     border-radius: 200px;
-    margin: 0 3.3em;
+    margin: 0 4%;
     transition: 0.3s ease;
     outline: none;
 }
