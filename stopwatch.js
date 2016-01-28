@@ -1,86 +1,81 @@
-var startTime = 0;
-var centiseconds = 0;
-var seconds = 0;
-var minutes = 0;
-var hours = 0;
-var defaultDisplay = '00:00:00:00';
-var started = false;
-
-var display = document.getElementById('time');
-display.innerHTML = defaultDisplay;
-
-function displayTime() {
-    var displayhours = hours < 10 ? '0' + hours : hours;
-    var displaymins = minutes < 10 ? '0' + minutes : minutes;
-    var displaysecs = seconds < 10 ? '0' + seconds: seconds;
-    var displaycsecs = centiseconds < 10 ? '0' + centiseconds : centiseconds;
-    console.log(displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs);
-    return displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs;
-}
-
-document.getElementById('start').onclick = start;
-
-function start() {
-   if (!started) {
-    interval();
-    started = true;
-   }
-   //  return Date.now();
-}
-
-document.getElementById('stop').onclick = stop;
-
-function stop() {
-   if (started) {
-    clearInterval(inc);
-    started = false;
-   }
-}
-
-function increment(start, stop) {
-    centiseconds ++;
-    if (centiseconds > 99) {
-        centiseconds = 0;
-        seconds ++;
-        if (seconds > 59) {
-            seconds = 0;
-            minutes ++;
-            if (minutes > 59) {
-                minutes = 0;
-                hours ++;
-            }
+var Timer = (function (){
+    var started = false;
+    var start = function() {
+        if (!started) {
+            started = true;
         }
-    }
-    display.innerHTML = displayTime();
-    return displayTime();
-}
+    };
 
-function interval() {
-    inc = setInterval(increment, 10);
-}
+    var stop = function() {
+        if (started) {
+            started = false;
+        }
+    };
 
-document.getElementById('reset').onclick = reset;
+    var csecs = 0;
+    var secs = 0;
+    var mins = 0;
+    var hrs = 0;
 
-function reset() {
-    clearInterval(inc);
-    hours = 0, minutes = 0, seconds = 0, centiseconds = 0;
+    var startClock = function() {
+        return window.setInterval(Timer.increment, 10);
+    };
+    var increment = function() {
+        console.log('started');
+        if (started) {
+            csecs++;
+            if (csecs > 99) {
+                csecs = 0;
+                secs++;
+            }
+            if (secs > 59) {
+                secs = 0;
+                mins++;
+            }
+            if (mins > 59) {
+                mins = 0;
+                hrs++;
+            }
+            display.innerHTML = displayTime();
+            return displayTime();
+        }
+    };
+
+    var display = document.getElementById('time');
+    var defaultDisplay = '00:00:00:00';
     display.innerHTML = defaultDisplay;
-    started = false;
-}
+    var displayTime = function() {
+        var displayhours = hrs < 10 ? '0' + hrs : hrs;
+        var displaymins = mins < 10 ? '0' + mins : mins;
+        var displaysecs = secs < 10 ? '0' + secs : secs;
+        var displaycsecs = csecs < 10 ? '0' + csecs : csecs;
+        return displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs;
+    };
 
-// var Stopwatch = {
-//     function: increment() {
-//         function add() {
-//
-//         };
-//     },
-//     function: clearTimeout() {
-//
-//     },
-//     function: start() {
-//         return Date.now();
-//     },
-//     function: stop() {
-//
-//     }
-// };
+    var reset = function() {
+        hrs = 0;
+        mins = 0;
+        secs = 0;
+        csecs = 0;
+        display.innerHTML = defaultDisplay;
+        started = false;
+    };
+    return {
+        startClock: startClock,
+        start: start,
+        stop: stop,
+        increment: increment,
+        displayTime: displayTime,
+        started: started,
+        reset: reset,
+        csecs: csecs,
+        secs: secs,
+        mins: mins,
+        hrs: hrs
+    };
+}());
+
+Timer.startClock();
+document.getElementById('start').onclick = Timer.start;
+document.getElementById('stop').onclick = Timer.stop;
+document.getElementById('reset').onclick = Timer.reset;
