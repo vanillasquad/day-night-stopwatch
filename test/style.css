@@ -2,3 +2,11 @@
     height: 50px;
     width: 200px;
 }
+
+#moon:hover {
+   fill: rgb(232, 102, 26);
+}
+
+#sun:hover {
+   fill: rgb(246, 244, 23);
+}
