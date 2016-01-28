@@ -1,9 +1,3 @@
-// test('start should return current time', function(assert) {
-//     var actual = start();
-//     var now = Date.now();
-//     assert.equal(actual, now);
-// });
-
 test('increment should increase centiseconds', function(assert) {
     var done = assert.async();
     start();
@@ -37,16 +31,15 @@ test('increment should increase by 5 seconds', function(assert) {
     }, 5010);
 });
 
-
-
 test('pause timer when stop is clicked', function(assert) {
     var done = assert.async();
     start();
     setTimeout(function() {
         var actual = displayTime();
         assert.equal(actual, '00:00:01:00');
+        stop();
         done();
-    }, 1001);
+    }, 1000);
 });
 
 test('clicking the reset button resets timer to 00:00:00:00', function(assert) {
