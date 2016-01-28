@@ -1,15 +1,21 @@
 var Timer = (function (){
+    var lapButton = document.getElementById('lap');
+    var startButton = document.getElementById('start');
     var started = false;
     var start = function() {
         if (!started) {
             started = true;
         }
+        startButton.className = 'btn hide-btn';
+        lapButton.className = 'btn';
     };
 
     var stop = function() {
         if (started) {
             started = false;
         }
+        lapButton.className = 'btn hide-btn';
+        startButton.className = 'btn';
     };
 
     var csecs = 0;
@@ -58,7 +64,20 @@ var Timer = (function (){
         csecs = 0;
         display.innerHTML = defaultDisplay;
         started = false;
+        lapButton.className = 'btn hide-btn';
+        startButton.className = 'btn';
     };
+
+    var lap = function() {
+        var newLap = document.createElement('P');
+        newLap.className = 'lapcount';
+        var lapTime = document.createTextNode(displayTime());
+        newLap.appendChild(lapTime);
+        document.getElementById('lap-container').appendChild(newLap);
+        reset();
+        start();
+    };
+
     return {
         startClock: startClock,
         start: start,
@@ -67,10 +86,7 @@ var Timer = (function (){
         displayTime: displayTime,
         started: started,
         reset: reset,
-        csecs: csecs,
-        secs: secs,
-        mins: mins,
-        hrs: hrs
+        lap: lap
     };
 }());
 
