@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" id='moon' fill='#000' x="0" y="0" width="200" height="200" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+<svg xmlns="http://www.w3.org/2000/svg" id='moon' fill='#fff' x="0" y="0" width="200" height="200" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
    <defs>
       <link href="../test/style.css" type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml"/>
    </defs>

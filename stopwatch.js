@@ -21,7 +21,6 @@ var Timer = (function (){
         return window.setInterval(Timer.increment, 10);
     };
     var increment = function() {
-        console.log('started');
         if (started) {
             csecs++;
             if (csecs > 99) {
@@ -79,3 +78,9 @@ Timer.startClock();
 document.getElementById('start').onclick = Timer.start;
 document.getElementById('stop').onclick = Timer.stop;
 document.getElementById('reset').onclick = Timer.reset;
+document.getElementById('moon').addEventListener('click', function() {
+    document.body.className = 'night';
+});
+document.getElementById('sun').addEventListener('click', function() {
+    document.body.className = '';
+});

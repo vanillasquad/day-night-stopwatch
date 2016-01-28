@@ -1,12 +1,59 @@
+body {
+    background-color: #96C5FF;
+    transition: background-color 1s ease;
+}
+
+#app {
+    width: 50%;
+    margin: 5em auto;
+    text-align:center;
+    color: #fff;
+}
+
+#timer-container {
+    font-size: 3em;
+    font-family: droid sans mono;
+}
+
+#button-container {
+    margin-bottom: 5em;
+}
+
 .btn {
-    height: 50px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px #fff solid;
+    border-radius: 200px;
+    margin: 0 4.2em;
+    transition: 0.3s ease;
 }
 
-#moon:hover {
-   fill: rgb(232, 102, 26);
+#start:hover {
+    background-color: #4BDF9F;
 }
 
-#sun:hover {
-   fill: rgb(246, 244, 23);
+#stop:hover {
+    background-color: #ED436B;
+}
+
+#reset:hover {
+    background-color: #529CF8;
+}
+
+#theme-container {
+    width: 20em;
+    height: 5em;
+    margin: 0 auto;
+}
+
+#sun, #moon {
+    width: 14%;
+    display: inline-block;
+    margin: 0 10%;
+}
+
+.night {
+    background-color: #292F45;
 }
