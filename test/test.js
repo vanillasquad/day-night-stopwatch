@@ -183,5 +183,19 @@ test('lap button should appear when timer is running', function(assert) {
     assert.ok(actual);
 });
 
+test('reset should clear all lap times', function(assert) {
+    Timer.start();
+    var done = assert.async();
+    setTimeout(function() {
+        Timer.lap();
+        setTimeout(function() {
+            Timer.clearLaps();
+            var actual = document.getElementsByClassName('lapcount');
+            assert.ok(actual.length === 0);
+            done();
+        }, 500);
+    }, 1000);
+});
+
 // add lap number?
-// reset function removes laps
+// lap needs to be hidden by default

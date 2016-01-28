@@ -64,6 +64,11 @@ var Timer = (function (){
         csecs = 0;
         display.innerHTML = defaultDisplay;
         started = false;
+        // var laps = document.getElementById('lap-container');
+        // while (laps.firstChild) {
+        //     laps.removeChild(laps.firstChild);
+        // }
+        // console.log(laps.firstChild);
         lapButton.className = 'btn hide-btn';
         startButton.className = 'btn';
     };
@@ -78,6 +83,13 @@ var Timer = (function (){
         start();
     };
 
+    var clearLaps = function() {
+        var laps = document.getElementById('lap-container');
+        while (laps.firstChild) {
+            laps.removeChild(laps.firstChild);
+        }
+    }
+
     return {
         startClock: startClock,
         start: start,
@@ -86,14 +98,19 @@ var Timer = (function (){
         displayTime: displayTime,
         started: started,
         reset: reset,
-        lap: lap
+        lap: lap,
+        clearLaps: clearLaps
     };
 }());
 
 Timer.startClock();
 document.getElementById('start').onclick = Timer.start;
 document.getElementById('stop').onclick = Timer.stop;
-document.getElementById('reset').onclick = Timer.reset;
+document.getElementById('reset').addEventListener('click', function() {
+    Timer.clearLaps();
+    Timer.reset();
+});
+document.getElementById('lap').onclick = Timer.lap;
 document.getElementById('moon').addEventListener('click', function() {
     document.body.className = 'night';
 });
