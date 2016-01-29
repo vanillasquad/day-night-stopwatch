@@ -23,9 +23,6 @@ var Timer = (function (){
     var mins = 0;
     var hrs = 0;
 
-    var startClock = function() {
-        return window.setInterval(Timer.increment, 10);
-    };
     var increment = function() {
         if (started) {
             csecs++;
@@ -70,8 +67,9 @@ var Timer = (function (){
 
     var lap = function() {
         var newLap = document.createElement('P');
+        var lapNumber = document.getElementsByClassName('lapcount').length + 1;
         newLap.className = 'lapcount';
-        var lapTime = document.createTextNode(displayTime());
+        var lapTime = document.createTextNode('Lap ' + lapNumber + " " + displayTime());
         newLap.appendChild(lapTime);
         document.getElementById('lap-container').appendChild(newLap);
         reset();
@@ -85,30 +83,49 @@ var Timer = (function (){
         }
     };
 
+    var init = (function() {
+        return window.setInterval(increment, 10);
+    }());
+
+    document.getElementById('start').onclick = start;
+    document.getElementById('stop').onclick = stop;
+    document.getElementById('lap').onclick = lap;
+    document.getElementById('reset').addEventListener('click', function() {
+        clearLaps();
+        reset();
+    });
+
+    var starsVisible = false;
+    var sunVisible = true;
+    document.getElementById('moon').addEventListener('click', function() {
+        if (starsVisible === false) {
+            document.body.className = 'night';
+            starsVisible = true;
+            sunVisible = false;
+            document.getElementById('star-overlay').style.opacity = 1;
+            setTimeout(function() {
+                if (sunVisible === false) {
+                    document.body.className = 'stars night'
+                    document.getElementById('star-overlay').style.opacity = 0;
+                }
+            }, 1200)
+        }
+    });
+    document.getElementById('sun').addEventListener('click', function() {
+        if (starsVisible === true) {
+            starsVisible = false;
+            sunVisible = true;
+            document.body.className = '';
+            document.getElementById('star-overlay').style.opacity = 0;
+        }
+    });
     return {
-        startClock: startClock,
         start: start,
         stop: stop,
         increment: increment,
         displayTime: displayTime,
-        started: started,
         reset: reset,
         lap: lap,
         clearLaps: clearLaps
     };
 }());
-
-Timer.startClock();
-document.getElementById('start').onclick = Timer.start;
-document.getElementById('stop').onclick = Timer.stop;
-document.getElementById('reset').addEventListener('click', function() {
-    Timer.clearLaps();
-    Timer.reset();
-});
-document.getElementById('lap').onclick = Timer.lap;
-document.getElementById('moon').addEventListener('click', function() {
-    document.body.className = 'night';
-});
-document.getElementById('sun').addEventListener('click', function() {
-    document.body.className = '';
-});

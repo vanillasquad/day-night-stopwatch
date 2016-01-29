@@ -3,8 +3,31 @@ body {
     transition: background-color 1s ease;
 }
 
+.stars {
+    background: url(../img/constellation.svg);
+    animation: move-stars 80s linear infinite;
+    background-size: 15%;
+}
+
+#star-overlay {
+    transition: 3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: #292F45;
+    opacity: 0;
+}
+
+@keyframes move-stars {
+    0% {background-position: 0% 0%}
+    100% {background-position: 100% 98%}
+}
+
 #app {
-    width: 50%;
+    width: 100%;
     margin: 5em auto;
     text-align:center;
     color: #fff;
@@ -15,13 +38,12 @@ body {
     font-family: droid sans mono;
 }
 
-#button-container {
-    margin-bottom: 5em;
-}
 
 #lap-container {
     font-size: 1.5em;
     font-family: droid sans mono;
+    margin: 1.5em 0;
+    min-height: 1px;
 }
 
 .btn {
@@ -32,10 +54,11 @@ body {
     background-color: transparent;
     border: 2px #fff solid;
     border-radius: 200px;
-    margin: 0 3.3em;
+    margin: 0 4%;
     transition: 0.3s ease;
     outline: none;
 }
+
 
 .hide-btn {
     display: none;
