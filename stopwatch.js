@@ -49,12 +49,12 @@ var Timer = (function (){
     var defaultDisplay = '00:00:00:00';
     display.innerHTML = defaultDisplay;
 
+    var timeUnit = function (t) {
+        return t < 10 ? '0' + t : t;
+    };
+
     var displayTime = function() {
-        var displayhours = hrs < 10 ? '0' + hrs : hrs;
-        var displaymins = mins < 10 ? '0' + mins : mins;
-        var displaysecs = secs < 10 ? '0' + secs : secs;
-        var displaycsecs = csecs < 10 ? '0' + csecs : csecs;
-        return displayhours + ':' + displaymins + ':' + displaysecs + ':' + displaycsecs;
+        return timeUnit(hrs) + ':' + timeUnit(mins) + ':' + timeUnit(secs) + ':' + timeUnit(csecs);
     };
 
     var reset = function() {
