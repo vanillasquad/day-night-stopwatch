@@ -105,10 +105,10 @@ var Timer = (function (){
             document.getElementById('star-overlay').style.opacity = 1;
             setTimeout(function() {
                 if (sunVisible === false) {
-                    document.body.className = 'stars night'
+                    document.body.className = 'stars night';
                     document.getElementById('star-overlay').style.opacity = 0;
                 }
-            }, 1200)
+            }, 1200);
         }
     });
     document.getElementById('sun').addEventListener('click', function() {
