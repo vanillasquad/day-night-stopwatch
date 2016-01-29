@@ -1,6 +1,8 @@
 var Timer = (function (){
+
     var lapButton = document.getElementById('lap');
     var startButton = document.getElementById('start');
+
     var started = false;
     var start = function() {
         if (!started) {
@@ -46,6 +48,7 @@ var Timer = (function (){
     var display = document.getElementById('time');
     var defaultDisplay = '00:00:00:00';
     display.innerHTML = defaultDisplay;
+
     var displayTime = function() {
         var displayhours = hrs < 10 ? '0' + hrs : hrs;
         var displaymins = mins < 10 ? '0' + mins : mins;
@@ -87,38 +90,6 @@ var Timer = (function (){
         return window.setInterval(increment, 10);
     }());
 
-    document.getElementById('start').onclick = start;
-    document.getElementById('stop').onclick = stop;
-    document.getElementById('lap').onclick = lap;
-    document.getElementById('reset').addEventListener('click', function() {
-        clearLaps();
-        reset();
-    });
-
-    var starsVisible = false;
-    var sunVisible = true;
-    document.getElementById('moon').addEventListener('click', function() {
-        if (starsVisible === false) {
-            document.body.className = 'night';
-            starsVisible = true;
-            sunVisible = false;
-            document.getElementById('star-overlay').style.opacity = 1;
-            setTimeout(function() {
-                if (sunVisible === false) {
-                    document.body.className = 'stars night';
-                    document.getElementById('star-overlay').style.opacity = 0;
-                }
-            }, 1200);
-        }
-    });
-    document.getElementById('sun').addEventListener('click', function() {
-        if (starsVisible === true) {
-            starsVisible = false;
-            sunVisible = true;
-            document.body.className = '';
-            document.getElementById('star-overlay').style.opacity = 0;
-        }
-    });
     return {
         start: start,
         stop: stop,
