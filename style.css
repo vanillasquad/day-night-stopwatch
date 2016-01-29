@@ -35,13 +35,13 @@ body {
 
 #timer-container {
     font-size: 3em;
-    font-family: droid sans mono;
+    font-family: droid sans mono, Helvetica;
 }
 
 
 #lap-container {
     font-size: 1.5em;
-    font-family: droid sans mono;
+    font-family: droid sans mono, Helvetica;
     margin: 1.5em 0;
     min-height: 1px;
 }
