@@ -6,6 +6,17 @@ document.getElementById('reset').addEventListener('click', function() {
     Timer.reset();
 });
 
+var container = document.getElementById('app');
+var heightEvents = ['load', 'resize'];
+var resize = function() {
+    var winHeight = window.innerHeight;
+    container.style.height = winHeight + 'px';
+}
+
+heightEvents.forEach(function(event) {
+    window.addEventListener(event, resize);
+});
+
 var starsVisible = false;
 var sunVisible = true;
 // clicking on the moon and then the sun too quickly means the overlay of stars appear in day mode
