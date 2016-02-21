@@ -73,8 +73,8 @@ var Timer = (function (){
         var lapNumber = document.getElementsByClassName('lapcount').length + 1;
         newLap.className = 'lapcount';
         var lapTime = document.createTextNode('Lap ' + lapNumber + " " + displayTime());
-        newLap.appendChild(lapTime);
-        document.getElementById('lap-container').appendChild(newLap);
+        newLap.insertBefore(lapTime, newLap.firstChild);
+        document.getElementById('lap-container').insertBefore(newLap, document.getElementById('lap-container').firstChild);
         reset();
         start();
     };

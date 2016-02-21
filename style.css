@@ -94,7 +94,7 @@ h2 {
 #sun, #moon {
     width: 14%;
     display: inline-block;
-    margin: 0 10%;
+    margin: 10% 10%;
 }
 
 .night {
